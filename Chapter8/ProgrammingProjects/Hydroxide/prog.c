@@ -12,13 +12,23 @@ void main()
 	char chemical[8];
 	printf("\nEnter chemical - ");
 	scanf("%s", chemical);
-	if(hydroxide(chemical))
+	if(hydroxide(&chemical))
 		printf("\nIt is a hydroxide.");
 	else
 		printf("\nIt is not a hydroxide.");
 }
 
-int hydroxide(char chemical[])
+int hydroxide( *str)
 {
-
+	if (str == NULL) {
+        	return 0;
+    	}
+    
+    	int len = strlen(str);
+    
+    	if (len < 2) {
+        	return 0;
+    	}
+    
+    	return (str[len - 2] == 'O' && str[len - 1] == 'H') ? 1 : 0;
 }
